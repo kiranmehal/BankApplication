@@ -33,12 +33,10 @@ public class Currency {
 	 * @return The value of amount in the "universal currency" (USD)
 	 */
 	public double valueInUSD(double amount) {
-		double amount1=amount;
-		
-		return amount1;
 		// @TODO:  Fill in the code for this
 		// Round your final answer to 2 decimal points. See round() function.
-		
+		amount = amount * getRate();
+		return round(amount, 2);
 	}
 
 	/** 
@@ -46,9 +44,8 @@ public class Currency {
 	 * @return name of Currency
 	 */
 	public String getName() {
-		return name;
 		// @TODO:  Fill in the code for this
-		
+		return this.name;
 	}
 	
 	/** 
@@ -57,8 +54,8 @@ public class Currency {
 	 * @return rate of this Currency
 	 */
 	public double getRate() {
-		return rate;
 		// @TODO:  Fill in the code for this
+		return this.rate;
 		
 	}
 	
@@ -69,6 +66,7 @@ public class Currency {
 	 */
 	public void setRate(Double rate) {
 		// @TODO:  Fill in the code for this
+		this.rate = rate;
 	}
 	
 	/** 
@@ -88,10 +86,17 @@ public class Currency {
 	 * @param othercurrency The other Currency
 	*/
 	public double valueInThisCurrency(double amount, Currency othercurrency) {
-		
-		return amount;
 		// @TODO:  Fill in the code for this
 		// Round all final results to 2 decimal points. See round() function.
+		
+		double convert_amount = valueInUSD(amount);
+		double exchanage_rate = othercurrency.getRate();
+		
+		//System.out.println("value1:" + converted_amount);
+
+		//System.out.println("  value2:" + exchanage_rate);
+		
+		return round(convert_amount/exchanage_rate,2);
 		
 	}
 	
@@ -101,5 +106,7 @@ public class Currency {
 	    BigDecimal bd = new BigDecimal(value);
 	    bd = bd.setScale(places, RoundingMode.HALF_UP);
 	    return bd.doubleValue();
+	    
 	}
+
 }
