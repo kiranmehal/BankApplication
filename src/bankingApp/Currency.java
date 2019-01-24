@@ -33,7 +33,9 @@ public class Currency {
 	 * @return The value of amount in the "universal currency" (USD)
 	 */
 	public double valueInUSD(double amount) {
-		return amount;
+		double amount1=amount;
+		
+		return amount1;
 		// @TODO:  Fill in the code for this
 		// Round your final answer to 2 decimal points. See round() function.
 		
@@ -86,6 +88,7 @@ public class Currency {
 	 * @param othercurrency The other Currency
 	*/
 	public double valueInThisCurrency(double amount, Currency othercurrency) {
+		
 		return amount;
 		// @TODO:  Fill in the code for this
 		// Round all final results to 2 decimal points. See round() function.

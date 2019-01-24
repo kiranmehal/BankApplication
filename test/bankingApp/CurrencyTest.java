@@ -13,7 +13,7 @@ public class CurrencyTest {
 	 * 	CAD = Canadian dollar
 	 * 	EUR = Euros
 	 * 	GBP = Great British Pounds
-	 * 	HKD = Hong Kong Dollars
+	 * 	HKD = HongKong Dollars
 	 */
 	public Currency CAD, EUR, GBP, HKD;
 	
@@ -28,6 +28,8 @@ public class CurrencyTest {
 	@Test
 	public void testGetName() {
 		// Write the test case for testing the getName() function
+		String ActualOutput=CAD.getName();
+		assertEquals("CAD", ActualOutput);
 		
 		fail("Write test case here");
 	}

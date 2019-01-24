@@ -37,12 +37,30 @@ public class AccountTest {
 	@Test
 	public void testAddWithdraw() {
 		// Something to consider - can you withdraw in a different currency?
-		fail("Write test case here");
+		try {
+			RBC.withdraw("Albert", new Money(100, CAD));
+			Money money = testAccount.getBalance();
+			assertEquals(100.0, money.getAmount(),0);
+		} catch (AccountDoesNotExistException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		//fail("Write test case here");
 		
 	}
 	
 	@Test
 	public void testGetBalance() {
-		fail("Write test case here");
+	
+		Money money1 = testAccount.getBalance();
+		double money2 = money1.getAmount();
+		System.out.println("money2:...." + money2);
+		assertEquals(100,money2,0);
+		
+		
+	//	fail("Write test case here");
 	}
 }
