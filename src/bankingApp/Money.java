@@ -19,7 +19,7 @@ public class Money implements Comparable {
 	 * @return Amount of money as an double type.
 	 */
 	public double getAmount() {
-		return amount;
+		return this.amount;
 		// @TODO:  Fill in the code for this
 		
 	}
@@ -29,7 +29,7 @@ public class Money implements Comparable {
 	 * @return Currency object representing the currency of this Money
 	 */
 	public Currency getCurrency() {
-		return currency;
+		return this.currency;
 		// @TODO:  Fill in the code for this
 		
 	}
@@ -39,7 +39,8 @@ public class Money implements Comparable {
 	 *  @return String representing the amount of Money.
 	 */
 	public String toString() {
-		return null;
+		return "" + this.amount +  " " + this.currency.getName();
+		
 		// @TODO:  Fill in the code for this
 		
 	}
@@ -49,7 +50,8 @@ public class Money implements Comparable {
 	 * @return The value of the Money in the "universal currency". (USD)
 	 */
 	public double getUniversalValue() {
-		return amount;
+		return this.currency.valueInUSD(this.amount);
+		
 		// @TODO:  Fill in the code for this
 		
 	}
@@ -60,7 +62,13 @@ public class Money implements Comparable {
 	 * @return A Boolean indicating if the two monies are equal.
 	 */
 	public boolean equals(Money other) {
-		return false;
+		if (this.currency.valueInUSD(this.amount) == other.currency.valueInUSD(other.amount)) {
+			 return true;
+		}
+		else
+		{
+			return false;
+		}
 		// @TODO:  Fill in the code for this
 		
 	}
@@ -72,7 +80,9 @@ public class Money implements Comparable {
 	 * (Remember to convert the other Money before adding the amounts)
 	 */
 	public Money add(Money other) {
-		return other;
+		this.amount = other.currency.valueInThisCurrency(other.amount, this.currency) + this.amount;
+		
+		return this;
 		// @TODO:  Fill in the code for this
 		
 	}
@@ -84,7 +94,10 @@ public class Money implements Comparable {
 	 * (Again, remember converting the value of the other Money to this Currency)
 	 */
 	public Money subtract(Money other) {
-		return other;
+		this.amount =  other.currency.valueInThisCurrency(other.amount, this.currency) - this.amount;
+		System.out.println("Money2: " +  other.currency.valueInThisCurrency(other.amount, this.currency));
+		this.amount = Currency.round(this.amount, 2);
+		return this;
 		// @TODO:  Fill in the code for this
 		
 	}
@@ -94,8 +107,17 @@ public class Money implements Comparable {
 	 * @return True if the amount of this Money is equal to 0.0, False otherwise
 	 */
 	public boolean isZero() {
-		return false;
+		
 		// @TODO:  Fill in the code for this
+		if(this.amount == 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
 		
 	}
 	/**
@@ -103,8 +125,10 @@ public class Money implements Comparable {
 	 * @return A new instance of the money class initialized with the new negated money amount.
 	 */
 	public Money negate() {
-		return null;
+		
 		// @TODO:  Fill in the code for this
+		this.amount = this.amount * -1;
+		return this;
 		
 	}
 	
@@ -118,8 +142,28 @@ public class Money implements Comparable {
 	 * A positive integer if this Money is more valuable than the other Money.
 	 */
 	public int compareTo(Object other) {
-		return 0;
-		// @TODO:  Fill in the code for this
 		
+		// @TODO:  Fill in the code for this
+if(other.equals(this)) {
+			
+			return 0;
+			
+		}
+		else {
+		
+			Money money = (Money) other;
+			
+			if(this.currency.valueInUSD(this.amount) < money.currency.valueInUSD(money.amount)) {
+				
+				return -1;
+				
+			}
+			else {
+				
+				return 1;
+				
+			}
+			
+		}
 	}
 }
