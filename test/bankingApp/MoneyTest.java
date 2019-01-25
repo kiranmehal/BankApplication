@@ -32,51 +32,60 @@ public class MoneyTest {
 
 	@Test
 	public void testGetAmount() {
-		fail("Write test case here");
+		assertEquals(200, CAD200.getAmount(),0);
 	}
 
 	@Test
 	public void testGetCurrency() {
-		fail("Write test case here");
+		assertEquals(CAD, CAD100.getCurrency());
+
 	}
 
 	@Test
 	public void testToString() {
-		fail("Write test case here");
+		assertEquals("10.0 EUR", EUR10.toString());
 	}
 
 	@Test
 	public void testGetUniversalValue() {
-		fail("Write test case here");
+		assertEquals(150, CAD200.getUniversalValue(),0);
 	}
 
 	@Test
 	public void testEqualsMoney() {
-		fail("Write test case here");
+		assertEquals(true, CAD0.equals(EUR0));
+		assertEquals(false, CAD100.equals(EUR0));
+		
 	}
 
 	@Test
 	public void testAdd() {
-		fail("Write test case here");
+		assertEquals("151.58 EUR",(EUR20.add(CAD200)).toString());
+		assertEquals("300.0 CAD",(CAD100.add(CAD200)).toString());
 	}
 
 	@Test
 	public void testSubtract() {
-		fail("Write test case here");
+		assertEquals("121.58 EUR",(EUR10.subtract(CAD200)).toString());
+		assertEquals("101.58 EUR",(EUR20.subtract(EUR10)).toString());
 	}
 
 	@Test
 	public void testIsZero() {
-		fail("Write test case here");
+		assertEquals(true, EUR0.isZero());
+		assertEquals(false, CAD200.isZero());
 	}
 
 	@Test
 	public void testNegate() {
-		fail("Write test case here");
+		assertEquals("100.0 CAD", CADnegative100.negate().toString());
 	}
 
 	@Test
 	public void testCompareTo() {
-		fail("Write test case here");
+		assertEquals(0, CAD100.compareTo(CAD100));
+		assertEquals(-1, EUR10.compareTo(CAD100));
+		assertEquals(1, CAD100.compareTo(EUR10));
+		
 	}
 }

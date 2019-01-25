@@ -95,7 +95,8 @@ public class Money implements Comparable {
 	 */
 	public Money subtract(Money other) {
 		this.amount =  other.currency.valueInThisCurrency(other.amount, this.currency) - this.amount;
-		System.out.println("Money2: " +  other.currency.valueInThisCurrency(other.amount, this.currency));
+
+		other.currency.valueInThisCurrency(other.amount, this.currency);
 		this.amount = Currency.round(this.amount, 2);
 		return this;
 		// @TODO:  Fill in the code for this
