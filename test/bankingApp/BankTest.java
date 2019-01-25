@@ -37,20 +37,23 @@ public class BankTest {
 		// You can quickly uncomment / comment by highlighting the lines of code and pressing 
 		// CTRL + / on your keyboard  (or CMD + / for Macs)
 		
-//		this.RBC.openAccount("Marcos");
-//		this.RBC.openAccount("Albert");
-//		this.TD.openAccount("Jigesha");
-//		this.HSBC.openAccount("Pritesh");
+	this.RBC.openAccount("Marcos");
+	this.RBC.openAccount("Albert");
+	this.TD.openAccount("Jigesha");
+		this.HSBC.openAccount("Pritesh");
 	}
 
 	@Test
 	public void testGetName() {
-		fail("Write test case here");
+		
+		assertEquals("TD Bank", TD.getName());
+		
+		//fail("Write test case here");
 	}
 
 	@Test
 	public void testGetCurrency() {
-		fail("Write test case here");
+		assertEquals("HKD", HKD.getName() );
 	}
 
 	@Test
@@ -60,7 +63,16 @@ public class BankTest {
 		
 		// See the example in class notes for testing exceptions.
 		
-		fail("Write test case here");
+		
+		try {
+			
+			 this.RBC.openAccount("Albert");
+			// fail("fail");
+			
+		}
+		catch (AccountExistsException e){
+			assertEquals("account exist", e.getMessage());
+		}
 	}
 
 	@Test
@@ -70,7 +82,17 @@ public class BankTest {
 		
 		// See the example in class notes for testing exceptions.
 		
-		fail("Write test case here");
+		try {
+		
+			RBC.deposit("Albert", new Money(100, CAD));
+			
+			assertEquals("100", RBC.getBalance("Albert"));
+		
+			
+		}
+		catch (Exception e){
+			assertEquals("doesn't exist", e.getMessage());
+		}
 	}
 
 	@Test
@@ -80,7 +102,18 @@ public class BankTest {
 		
 		// See the example in class notes for testing exceptions.
 		
-		fail("Write test case here");
+		try {
+			
+			RBC.withdraw("Marcos", new Money(100,CAD));
+			
+			assertEquals("", RBC.getBalance("Marcos"));
+			
+		
+			
+		}
+		catch (Exception e){
+			assertEquals("", e.getMessage());
+		}
 	}
 	
 	@Test
@@ -90,7 +123,10 @@ public class BankTest {
 		
 		// See the example in class notes for testing exceptions.
 		
-		fail("Write test case here");
+double amount = RBC.getBalance("Albert");
+		
+		assertEquals("", amount);
+		
 	}
 	
 	@Test
